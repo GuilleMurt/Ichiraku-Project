@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Anime</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Lista de Anime</h1>
+    </header>
+    <aside class="sidebar">
+        <h2>Filtros</h2>
+        <ul>
+            <li><a href="#" onclick="filterAnime('all')">Todos</a></li>
+            <li><a href="#" onclick="filterAnime('viendo')">Viendo</a></li>
+            <li><a href="#" onclick="filterAnime('completado')">Completado</a></li>
+            <li><a href="#" onclick="filterAnime('pausado')">Pausado</a></li>
+            <li><a href="#" onclick="filterAnime('abandonado')">Abandonado</a></li>
+            <li><a href="#" onclick="filterAnime('planificado')">Planificado</a></li>
+        </ul>
+    </aside>
+    <main class="anime-list">
+        <div class="anime-card" data-status="completado">
+            <img src="anime1.jpg" alt="Anime 1">
+            <h3>Amagami-san Chi no Enmusubi</h3>
+            <p>15/24 episodios</p>
+        </div>
+        <div class="anime-card" data-status="viendo">
+            <img src="anime2.jpg" alt="Anime 2">
+            <h3>Dr. STONE: SCIENCE FUTURE</h3>
+            <p>3/12 episodios</p>
+        </div>
+        <div class="anime-card" data-status="pausado">
+            <img src="anime3.jpg" alt="Anime 3">
+            <h3>Re:Zero kara Hajimeru Isekai Seikatsu 2</h3>
+            <p>10/12 episodios</p>
+        </div>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>

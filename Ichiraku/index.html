@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="icon" href="./src/assets/Ichiraku-removebg-preview.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./src/assets/styles/style.css">
+    <title>Ichiraku</title>
+</head>
+<body>
+    <div class="header-container">
+        <div class="logo-name-container">
+            <img src="./src/assets/Ichiraku-removebg-preview.png" alt="Logo de Specter Shoes">
+            <h1>Ichiraku</h1>
+        </div>
+    </div> 
+    
+    <div class="container-table">
+        <div class="btn-and-search-div">
+            <div class="btn-shoes">
+              <button class="btn-new-item" data-bs-toggle="modal" data-bs-target="#createItem">Nuevo Producto</button>
+            </div>
+            <div class="search-input">
+                <i class="fas fa-search fa-lg"></i>
+                <input id="searchInput" type="text" placeholder="Buscar...">
+            </div>
+        </div>
+        <div class="headers-container">
+            <p class="product-list-header table-header">Lista productos</p>
+            <p class="creation-date-header table-header">Fecha creación</p>
+            <p class="modification-date-header table-header">Fecha última modificación</p>
+        </div>
+        <div class="table-content">
+
+        </div>
+    </div>
+
+    <!-- Modal para agregar producto -->
+    <div class="modal fade" id="createItem" tabindex="-1" aria-labelledby="createItemLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- Encabezado del modal -->
+            <div class="modal-header">
+              <h5 class="modal-title" id="createItemLabel">Crear item</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Cuerpo del modal -->
+            <div id="buttons-selection">
+                <h2>Seleccione el tipo de item</h2>
+                <div class="buttons-selection">
+                  <button type="button" id="simple-btn" class="btn btn-primary">Item simple</button>
+                  <button type="button" id="visual-btn" class="btn btn-primary">Item visual</button>
+                </div>
+            </div>
+            <!-- Item simple -->
+            <div id="item-simple-form" class="modal-body">
+              <label for="create-simple-name">Nombre</label>
+              <input type="text" class="form-control" id="create-simple-name" placeholder="Ingrese el nombre del producto">
+
+              <label for="create-simple-description">Descripción</label>
+              <textarea class="form-control" id="create-simple-description" placeholder="Ingrese la descripción del producto"></textarea>
+
+              <label for="create-simple-creationDate">Fecha de creación</label>
+              <input type="date" class="form-control" id="create-simple-creationDate" value="" disabled>
+
+              <label for="create-simple-modificationDate">Fecha de modificación</label>
+              <input type="date" class="form-control" id="create-simple-modificationDate" value="" disabled>
+            </div>
+            <!-- Item visual -->
+            <div id="item-visual-form" class="modal-body">
+              <label for="create-visual-name">Nombre</label>
+              <input type="text" class="form-control" id="create-visual-name" placeholder="Ingrese el nombre del producto">
+
+              <label for="create-visual-description">Descripción</label>
+              <textarea class="form-control" id="create-visual-description" placeholder="Ingrese la descripción del producto"></textarea>
+
+              <label for="create-visual-creationDate">Fecha de creación</label>
+              <input type="date" class="form-control" id="create-visual-creationDate" value="" disabled>
+
+              <label for="create-visual-modificationDate">Fecha de modificación</label>
+              <input type="date" class="form-control" id="create-visual-modificationDate" value="" disabled>
+
+              <label for="create-visual-imageURL">Imagen</label>
+              <input type="text" class="form-control" id="create-visual-imageURL" placeholder="Ingrese la URL de la imagen">
+            </div>
+            <!-- Pie de página del modal -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" id="create-item" class="btn btn-primary">Crear item</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal para editar producto -->
+    <div class="modal fade" id="updateItem" tabindex="-1" aria-labelledby="updateItemLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Encabezado del modal -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="updateItemLabel">Editar item</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <!-- Item simple -->
+          <div id="update-item-simple-form" class="modal-body">
+            <label for="update-simple-name">Nombre</label>
+            <input type="text" class="form-control" id="update-simple-name" placeholder="Ingrese el nombre del producto">
+
+            <label for="update-simple-description">Descripción</label>
+            <textarea class="form-control" id="update-simple-description" placeholder="Ingrese la descripción del producto"></textarea>
+
+            <label for="update-simple-creationDate">Fecha de creación</label>
+            <input type="date" class="form-control" id="update-simple-creationDate" value="" disabled>
+
+            <label for="update-simple-modificationDate">Fecha de modificación</label>
+            <input type="date" class="form-control" id="update-simple-modificationDate" value="" disabled>
+          </div>
+          <!-- Item visual -->
+          <div id="update-item-visual-form" class="modal-body">
+            <label for="update-visual-name">Nombre</label>
+            <input type="text" class="form-control" id="update-visual-name" placeholder="Ingrese el nombre del producto">
+
+            <label for="update-visual-description">Descripción</label>
+            <textarea class="form-control" id="update-visual-description" placeholder="Ingrese la descripción del producto"></textarea>
+
+            <label for="update-visual-creationDate">Fecha de creación</label>
+            <input type="date" class="form-control" id="update-visual-creationDate" value="" disabled>
+
+            <label for="update-visual-modificationDate">Fecha de modificación</label>
+            <input type="date" class="form-control" id="update-visual-modificationDate" value="" disabled>
+
+            <label for="update-visual-imageURL">Imagen</label>
+            <input type="text" class="form-control" id="update-visual-imageURL" placeholder="Ingrese la URL de la imagen">
+          </div>
+          <!-- Pie de página del modal -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" id="update-item" class="btn btn-primary">Editar item</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- Modal para confirmar eliminación de un item -->
+      <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="confirmDeleteLabel">Confirmar eliminación</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ¿Estás seguro de que quieres eliminar el ítem <strong id="itemToDeleteName"></strong>?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contenedor para alertas -->
+      <div id="alertContainer" class="position-fixed top-0 end-0 p-3" style="z-index: 1050;"></div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="./src/js/main.js"></script>
+</body>
+</html>
