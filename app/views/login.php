@@ -11,12 +11,12 @@
 <body>
     <form action="index.php" method="POST">
         <input type="hidden" name="action" value="login">
-        <label for="email">Correo:</label>
+        <label for="email">Correu:</label>
         <input type="email" id="email" name="email" required>
-        <label for="password">Contraseña:</label>
+        <label for="password">Contrasenya:</label>
         <input type="password" id="password" name="password" required>
-        <button type="submit">Iniciar Sesión</button>
-        <a href="index.php?action=register">¿No tienes cuenta? Regístrate</a>
+        <button type="submit">Iniciar Sessió</button>
+        <a href="index.php?action=register">¿No tens compte? Regístra't</a>
     </form>
 </body>
 </html>

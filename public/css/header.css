@@ -1,44 +1,84 @@
-/* Header styles */
-header {
-  background-color: #333;
-  padding: 10px 0;
-}
-
-/* Navbar styles */
-.navbar {
+/* General header styles */
+.header {
+  background-color: #070157;
+  width: 100%;
+  padding: 20px 20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
-/* Menu styles */
-.menu {
+.logo-ichiraku {
+  width: 60px;
+  height: auto;
+}
+
+.nav-header ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 20px;
+  justify-content: space-between;
 }
 
-.menu li {
-  display: inline;
-}
-
-.menu a {
+.nav-link {
+  color: #fff;
   text-decoration: none;
-  color: white;
+  text-align: center;
+  padding: 20px;
+  display: block;
+  width: fit-content;
   font-size: 16px;
-  padding: 10px 15px;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  color: #E7B348;
+  transition: color 0.3s ease;
+}
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+}
+
+.user-header {
+  list-style: none;
+}
+
+.dropdown-menu {
+  display: none !important; /* Escondido por defecto */
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 10%;
+  background-color: #fff;
+  color: #333;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+.dropdown-menu li {
+  padding: 5px 20px;
+}
+
+.dropdown-menu li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  display: block;
   transition: background-color 0.3s ease;
 }
 
-.menu a:hover {
-  background-color: #555;
-  border-radius: 5px;
+.dropdown-menu li a:hover {
+  background-color: #f4f4f4;
 }
 
-/* User-specific styles */
-.menu .user a {
-  font-weight: bold;
-  color: #ffcc00;
+/* Mostrar el menú cuando tenga la clase "show" */
+.dropdown-menu.show {
+  display: flex !important;
 }

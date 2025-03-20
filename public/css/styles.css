@@ -8,10 +8,6 @@
 
 body {
     background-color: #f4f4f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     color: #333;
     font-family: 'Geist', sans-serif;
   }
