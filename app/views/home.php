@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/home.css">
 </head>
 <body>
-    
+    <h1>Home</h1>
+    <a href="index.php?action=logout">Logout</a>
+
+
 </body>
 </html>

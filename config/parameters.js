@@ -1,0 +1,1 @@
+window.ichirakuUrl ="http://127.0.0.1/Ichiraku-Project-2/";
