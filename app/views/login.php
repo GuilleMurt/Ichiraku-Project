@@ -1,4 +1,3 @@
-<!-- filepath: d:\Xampp\htdocs\Ichiraku-Project-2\app\views\login.php -->
 <!DOCTYPE html>
 <html lang="es">
 <head>

@@ -1,9 +1,9 @@
 <?php
     define('views_controller',array(
-        'homeController.php'));
+        'homeController.php', 'aboutController.php', 'profileController.php'));
     
     define('apis', array(
-        /* 'ApiCertificacionController.php' */));
+        'ApiUserController.php'));
     
     define('models', array(
         'User.php'));

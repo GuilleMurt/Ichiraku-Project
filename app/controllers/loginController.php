@@ -32,6 +32,7 @@ class LoginController {
         $userId = User::verifyPassword($email, $password);
         if ($userId) {
             $_SESSION['user_id'] = $userId;
+            $_SESSION['user_email'] = $email;
             header("Location: index.php?controller=home");
             exit();
         } else {

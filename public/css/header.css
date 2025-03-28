@@ -50,8 +50,8 @@
   display: none !important; /* Escondido por defecto */
   flex-direction: column;
   position: absolute;
-  top: 100%;
-  left: 10%;
+  top: 90%;
+  right: 10%;
   background-color: #fff;
   color: #333;
   list-style: none;
@@ -63,14 +63,19 @@
 }
 
 .dropdown-menu li {
-  padding: 5px 20px;
+  padding: 5px;
 }
 
 .dropdown-menu li a {
+  display: flex !important;
+  align-items: center;
+  gap: 4px;
   text-decoration: none;
   color: #333;
   font-size: 14px;
   display: block;
+  padding: 7px 25px;
+  border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 
@@ -81,4 +86,17 @@
 /* Mostrar el menú cuando tenga la clase "show" */
 .dropdown-menu.show {
   display: flex !important;
+}
+
+.logout-link {
+  color: #f14343 !important;
+  transition: background-color 0.3s ease;
+}
+
+.logout-link:hover {
+  background-color: #fef2f2 !important;
+}
+
+.logout-link a {
+  color: #f14343 !important;
 }

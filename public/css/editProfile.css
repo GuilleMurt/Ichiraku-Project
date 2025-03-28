@@ -1,0 +1,223 @@
+/* Página de Editar Perfil */
+.edit-profile-page {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* Sección de Portada */
+.profile-header {
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Banner */
+.banner {
+  width: 100%;
+  height: 300px;
+  background-color: #333;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Contenedor de la tarjeta de perfil */
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  margin-top: -150px;
+  z-index: 2;
+}
+
+/* Foto de perfil */
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Estilo para los inputs y etiquetas */
+.input-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.input-field label {
+  font-size: 16px;
+  color: #333;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.input-field input,
+.input-field textarea {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.input-field input:focus,
+.input-field textarea:focus {
+  border-color: #007bff;
+  background-color: #fff;
+  outline: none;
+}
+
+/* Efecto al enfocar los inputs */
+.input-field input:focus,
+.input-field textarea:focus {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Estilo para el campo de selección de archivo */
+.file-input {
+  margin-bottom: 20px;
+}
+
+.file-input input[type="file"] {
+  font-size: 16px;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: background-color 0.3s ease;
+}
+
+.file-input input[type="file"]:hover {
+  background-color: #e9e9e9;
+}
+
+/* Botón de Guardar Cambios */
+.btn-save {
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-save:hover {
+  background-color: #0056b3;
+}
+
+/* Barra de navegación */
+.profile-nav {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.profile-nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+.profile-nav ul li {
+  margin: 0 20px;
+}
+
+.profile-nav ul li a {
+  font-size: 16px;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 5px;
+  transition: all 0.3s ease;
+}
+
+.profile-nav ul li a:hover {
+  color: #0056b3;
+}
+
+.profile-nav ul li a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #007bff;
+  transition: width 0.3s ease;
+}
+
+.profile-nav ul li a:hover::before {
+  width: 100%;
+}
+
+.profile-nav ul li a.active {
+  font-weight: bold;
+  color: #0056b3;
+}
+
+.profile-nav ul li a.active::before {
+  width: 100%;
+  background-color: #0056b3;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  .edit-profile-page {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-header {
+    flex-direction: column;
+  }
+
+  .profile-card {
+    width: 80%;
+    margin-top: 0;
+  }
+
+  .profile-nav ul {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .profile-nav ul li {
+    margin: 10px 0;
+  }
+}
