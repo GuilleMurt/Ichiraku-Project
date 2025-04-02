@@ -45,10 +45,6 @@
             <label for="email">Correo Electrónico</label>
             <input type="email" id="email" name="email" placeholder="Ingrese su correo electrónico" required>
           </div>
-          <div class="input-field">
-            <label for="bio">Biografía</label>
-            <textarea id="bio" name="bio" rows="4" placeholder="Escribe algo sobre ti" required></textarea>
-          </div>
 
           <!-- Cambiar foto de perfil -->
           <div class="file-input">

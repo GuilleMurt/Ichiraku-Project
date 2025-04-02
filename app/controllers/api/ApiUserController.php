@@ -47,18 +47,41 @@ class ApiUserController{
           $user_name = isset($_POST["user_name"]) ? $_POST["user_name"] : '';
           $user_email = isset($_POST["user_email"]) ? $_POST["user_email"] : '';
           $user_img = isset($_POST["user_img"]) ? $_POST["user_img"] : '';
+          $new_img = isset($_FILES["new_img"]) ? $_FILES["new_img"] : '';
 
-          if (User::updateUser($user_id, $user_name, $user_email, $user_img)) {
-              $this->sendJsonResponse(["message" => "Usuario actualizado correctamente"]);
+          if ($new_img == null) {
+            if (User::updateUser($user_id, $user_name, $user_email, $user_img)) {
+                $this->sendJsonResponse([
+                    "message" => "Usuario actualizado correctamente",
+                    "redirect" => url . "?controller=profile"
+                ]);
+            } else {
+                $this->sendJsonResponse(["error" => "Error al actualizar el usuario"]);
+            }
           } else {
-              $this->sendJsonResponse(["error" => "Error al actualizar el usuario"]);
+            $uploadDir = 'public/img/profile_pictures/';
+            $uploadFile = $uploadDir . basename($_FILES['new_img']['name']);
+            if (move_uploaded_file($new_img['tmp_name'], $uploadFile)) {
+                $new_img = $uploadFile; // Guardar la ruta del archivo
+            } else {
+                $this->sendJsonResponse(["error" => "Error al mover la imagen"]);
+                return;
+            }
+            if (User::updateUser($user_id, $user_name, $user_email, $new_img)) {
+                $this->sendJsonResponse([
+                    "message" => "Usuario actualizado correctamente",
+                    "redirect" => url . "?controller=profile"
+            ]);
+            } else {
+                $this->sendJsonResponse(["error" => "Error al actualizar el usuario"]);
+            }
           }
+        }
       } else {
           $this->sendJsonResponse(["error" => "No se ha iniciado sesión"]);
       }
       return;
     }
-  }
   
 
 

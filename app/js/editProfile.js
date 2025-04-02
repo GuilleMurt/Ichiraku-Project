@@ -9,13 +9,11 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   // Obtener el email del usuario desde la sesión
   let session_data = await get_session_email();
-  if (session_data.user_email) {
-    let user_data = await get_user_name(session_data.user_email);
-
+  let user_data = await get_user_name(session_data.user_email);
+  if (user_data) {
     // Rellenar los campos del formulario de edición con los datos del usuario
     document.querySelector("#name").value = user_data.user_name;
     document.querySelector("#email").value = user_data.user_email;
-    document.querySelector("#bio").value = user_data.user_bio;
     document.querySelector(".user-img").src = user_data.user_img;
 
     // Mostrar el perfil
@@ -25,10 +23,53 @@ document.addEventListener("DOMContentLoaded", async function () {
     console.error("Error:", session_data.error);
   }
 
+  document.querySelector("#profile-img").addEventListener("change", function () {
+    let file = document.querySelector("#profile-img").files[0];
+    if (file) {
+        // Validar tipo de archivo
+        const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+        if (!allowedTypes.includes(file.type)) {
+            alert("Tipo de archivo no permitido. Solo se permiten imágenes JPEG, PNG y GIF.");
+            return;
+        }
+
+        // Validar tamaño del archivo (máximo 2 MB)
+        const maxSize = 2 * 1024 * 1024; // 2 MB
+        if (file.size > maxSize) {
+            alert("El archivo es demasiado grande. El tamaño máximo permitido es de 2 MB.");
+            return;
+        }
+
+        // Mostrar vista previa de la imagen
+        let reader = new FileReader();
+        reader.onload = function (e) {
+            document.querySelector(".user-img").src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+  });
+
+  editProfileForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    let userId = user_data.user_id;
+    let userName = document.querySelector("#name").value;
+    let userEmail = document.querySelector("#email").value;
+    let userImg = document.querySelector(".user-img").src;
 
 
+    // Si el usuario sube una nueva foto
+    let profileImgFile = document.querySelector("#profile-img").files[0];
+    if (profileImgFile) {
+      await update_user(userId, userName, userEmail, userImg, profileImgFile);
+    } else {
+      await update_user(userId, userName, userEmail, userImg, null);
+    }
+  });
 
 
+  // -----------------------------------------------------------------------------
+  // Lamadas a las funciones de la API
+  // -----------------------------------------------------------------------------
   async function get_session_email() {
     let formData = new FormData();
     formData.append("accion", "get_session_email");
@@ -57,57 +98,36 @@ document.addEventListener("DOMContentLoaded", async function () {
       console.error("Error:", error.message);
     }
   }
-  // TODO: Separar las llamadas a la API del código de la página para que esté mejor estructurado, y llamarlas cuando sea necesario
-  // Agregar un listener para el envío del formulario de edición
-  editProfileForm.addEventListener("submit", async function (e) {
-    e.preventDefault();
 
-    let userName = document.querySelector("#name").value;
-    let userEmail = document.querySelector("#email").value;
-    let userBio = document.querySelector("#bio").value;
-    let userImg = document.querySelector(".user-img").src;
+  async function update_user(user_id, user_name, user_email, user_img, new_img) {
+    let formData = new FormData();
+    formData.append("accion", "update_user");
+    formData.append("user_id", user_id);
+    formData.append("user_name", user_name);
+    formData.append("user_email", user_email);
+    formData.append("user_img", user_img);
+    formData.append("new_img", new_img);
 
-    // Si el usuario sube una nueva foto
-    let profileImgFile = document.querySelector("#profile-img").files[0];
-    if (profileImgFile) {
-      const formData = new FormData();
-      formData.append("accion", "update_user");
-      formData.append("user_email", userEmail);
-      formData.append("user_name", userName);
-      formData.append("user_bio", userBio);
+    const url = `${ichirakuUrl}?controller=ApiUser&action=api`;
 
-      const url = `${ichirakuUrl}?controller=ApiUser&action=api`;
+    try {
+      const response = await axios.post(url, formData);
+      const data = response.data;
+      alert(response.data.message);
 
-      try {
-        const response = await axios.post(url, formData);
-        if (response.data.success) {
-          alert("Perfil actualizado correctamente");
-        } else {
-          alert("Hubo un error al actualizar el perfil");
-        }
-      } catch (error) {
-        console.error("Error:", error.message);
+      if (data.redirect) {
+        // Redirigir al usuario a la vista de perfil
+        window.location.href = data.redirect;
+      } else if (data.error) {
+          alert(data.error); // Mostrar el error si ocurre
+      } else {
+          alert(data.message); // Mostrar mensaje de éxito
       }
-    } else {
-      // Si no hay imagen nueva, se envían los datos sin cambiar la imagen
-      let formData = new FormData();
-      formData.append("accion", "update_user");
-      formData.append("user_email", userEmail);
-      formData.append("user_name", userName);
-      formData.append("user_bio", userBio);
+      return data;
 
-      const url = `${ichirakuUrl}?controller=ApiUser&action=api`;
-
-      try {
-        const response = await axios.post(url, formData);
-        if (response.data.success) {
-          alert("Perfil actualizado correctamente");
-        } else {
-          alert("Hubo un error al actualizar el perfil");
-        }
-      } catch (error) {
-        console.error("Error:", error.message);
-      }
+    } catch (error) {
+      console.error("Error:", error.message);
     }
-  });
+  }
+
 });
