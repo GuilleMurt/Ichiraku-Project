@@ -1,0 +1,133 @@
+/* Contenedor principal */
+.anime-details {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Cabecera del anime */
+.anime-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.anime-banner {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: -100px;
+}
+
+.anime-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.anime-info {
+  display: flex;
+  align-items: flex-start;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: -50px;
+  width: 100%;
+}
+
+.anime-poster {
+  flex: 0 0 200px;
+  margin-right: 20px;
+}
+
+.anime-poster img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.anime-meta {
+  flex: 1;
+}
+
+/* Contenedor del título y botón */
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title-container h1 {
+  margin-right: 20px;
+  font-size: 24px;
+}
+
+.title-container .btn {
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+.anime-meta h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.anime-meta p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.anime-meta .anime-score {
+  font-size: 18px;
+  color: #f39c12;
+}
+
+/* Descripción */
+.anime-description {
+  margin-top: 30px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.anime-description h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.anime-description p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Detalles adicionales */
+.anime-details-extra {
+  margin-top: 30px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.anime-details-extra h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.anime-details-extra ul {
+  list-style: none;
+  padding: 0;
+}
+
+.anime-details-extra li {
+  font-size: 16px;
+  color: #555;
+  margin: 5px 0;
+}

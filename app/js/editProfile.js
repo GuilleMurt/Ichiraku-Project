@@ -27,9 +27,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     let file = document.querySelector("#profile-img").files[0];
     if (file) {
         // Validar tipo de archivo
-        const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+        const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/jpg"];
         if (!allowedTypes.includes(file.type)) {
-            alert("Tipo de archivo no permitido. Solo se permiten imágenes JPEG, PNG y GIF.");
+            alert("Tipo de archivo no permitido. Solo se permiten imágenes JPEG, PNG, GIF y WEBP.");
             return;
         }
 

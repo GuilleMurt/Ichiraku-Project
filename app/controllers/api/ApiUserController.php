@@ -49,6 +49,8 @@ class ApiUserController{
           $user_img = isset($_POST["user_img"]) ? $_POST["user_img"] : '';
           $new_img = isset($_FILES["new_img"]) ? $_FILES["new_img"] : '';
 
+          $_SESSION['user_email'] = $user_email;
+
           if ($new_img == null) {
             if (User::updateUser($user_id, $user_name, $user_email, $user_img)) {
                 $this->sendJsonResponse([

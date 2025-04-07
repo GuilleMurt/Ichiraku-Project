@@ -29,6 +29,13 @@ body > * {
   align-items: center;
   justify-content: space-between;
   overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.anime-card:hover {
+  cursor: pointer;
+  transform: translateY(-5px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 /* Image inside card */
@@ -155,3 +162,33 @@ body > * {
   background: #004099;
 }
 
+/* Estilos para el buscador */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+#search-input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#search-button {
+  padding: 10px 15px;
+  margin-left: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#search-button:hover {
+  background-color: #0056b3;
+}
