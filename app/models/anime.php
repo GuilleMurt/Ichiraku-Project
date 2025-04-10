@@ -1,13 +1,12 @@
 <?php
-require 'config/BBDD.php';
+require_once 'config/db.php';
 
 class Anime {
     protected $anime_id;
     protected $title;
-    protected $description;
-    protected $year;
-    protected $genre;
+    protected $image;
     protected $total_chapters;
+    protected $status;
 
     public function __construct() {}
 
@@ -30,41 +29,16 @@ class Anime {
     }
 
     // Registrar un nuevo anime
-    public static function registerAnime($title, $description, $year, $genre, $total_chapters) {
+    public static function registerAnime($anime_id, $title, $image, $total_chapters, $status) {
         $conn = db::connect();
-        $sql = "INSERT INTO animes (title, description, year, genre, total_chapters) 
-                VALUES (:title, :description, :year, :genre, :total_chapters)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
-        $stmt->bindParam(':description', $description, PDO::PARAM_STR);
-        $stmt->bindParam(':year', $year, PDO::PARAM_INT);
-        $stmt->bindParam(':genre', $genre, PDO::PARAM_STR);
-        $stmt->bindParam(':total_chapters', $total_chapters, PDO::PARAM_INT);
-        return $stmt->execute();
-    }
-
-    // Actualizar un anime
-    public static function updateAnime($anime_id, $title, $description, $year, $genre, $total_chapters) {
-        $conn = db::connect();
-        $sql = "UPDATE animes 
-                SET title = :title, description = :description, year = :year, genre = :genre, total_chapters = :total_chapters 
-                WHERE anime_id = :anime_id";
+        $sql = "INSERT INTO animes (anime_id, title, image, total_chapters, status) 
+                VALUES (:anime_id, :title, :image, :total_chapters, :status)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':anime_id', $anime_id, PDO::PARAM_INT);
         $stmt->bindParam(':title', $title, PDO::PARAM_STR);
-        $stmt->bindParam(':description', $description, PDO::PARAM_STR);
-        $stmt->bindParam(':year', $year, PDO::PARAM_INT);
-        $stmt->bindParam(':genre', $genre, PDO::PARAM_STR);
+        $stmt->bindParam(':image', $image, PDO::PARAM_STR);
         $stmt->bindParam(':total_chapters', $total_chapters, PDO::PARAM_INT);
-        return $stmt->execute();
-    }
-
-    // Eliminar un anime
-    public static function deleteAnime($anime_id) {
-        $conn = db::connect();
-        $sql = "DELETE FROM animes WHERE anime_id = :anime_id";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':anime_id', $anime_id, PDO::PARAM_INT);
+        $stmt->bindParam(':status', $status, PDO::PARAM_STR);
         return $stmt->execute();
     }
 
@@ -87,30 +61,12 @@ class Anime {
         return $this;
     }
 
-    public function getDescription() {
-        return $this->description;
+    public function getImage() {
+        return $this->image;
     }
 
-    public function setDescription($description) {
-        $this->description = $description;
-        return $this;
-    }
-
-    public function getYear() {
-        return $this->year;
-    }
-
-    public function setYear($year) {
-        $this->year = $year;
-        return $this;
-    }
-
-    public function getGenre() {
-        return $this->genre;
-    }
-
-    public function setGenre($genre) {
-        $this->genre = $genre;
+    public function setImage($image) {
+        $this->image = $image;
         return $this;
     }
 
@@ -122,51 +78,14 @@ class Anime {
         $this->total_chapters = $total_chapters;
         return $this;
     }
-}
-/* function ObtenerTodosLosAnimes() {
-    global $pdo;
-    $sql = "SELECT * FROM animes";
-    $stmt = $pdo->query($sql);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
 
-function ObtenerAnimePorId($id_anime) {
-    global $pdo;
-    $sql = "SELECT * FROM animes WHERE id_anime = :id_anime";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':id_anime', $id_anime, PDO::PARAM_INT);
-    $stmt->execute();
-    return $stmt->fetch(PDO::FETCH_ASSOC);
-}
+    public function getStatus() {
+        return $this->status;
+    }
 
-function ObtenerValoracionesPorAnime($id_anime) {
-    global $pdo;
-    $sql = "SELECT v.*, u.nom_usuari FROM valoracions v JOIN usuaris u ON v.id_usuari = u.id_usuari WHERE id_anime = :id_anime";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':id_anime', $id_anime, PDO::PARAM_INT);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    public function setStatus($status) {
+        $this->status = $status;
+        return $this;
+    }
 }
-
-function AgregarValoracionAnime($id_anime, $id_usuari, $puntuacio, $comentari) {
-    global $pdo;
-    $sql = "INSERT INTO valoracions (id_anime, id_usuari, puntuacio, comentari) VALUES (:id_anime, :id_usuari, :puntuacio, :comentari)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':id_anime', $id_anime, PDO::PARAM_INT);
-    $stmt->bindParam(':id_usuari', $id_usuari, PDO::PARAM_INT);
-    $stmt->bindParam(':puntuacio', $puntuacio, PDO::PARAM_STR);
-    $stmt->bindParam(':comentari', $comentari, PDO::PARAM_STR);
-    return $stmt->execute();
-}
-
-function ActualizarEstadoAnimeBD($id_usuari, $id_anime, $id_estat) {
-    global $pdo;
-    $sql = "INSERT INTO usuari_anime (id_usuari, id_anime, id_estat) VALUES (:id_usuari, :id_anime, :id_estat)
-            ON DUPLICATE KEY UPDATE id_estat = :id_estat";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':id_usuari', $id_usuari, PDO::PARAM_INT);
-    $stmt->bindParam(':id_anime', $id_anime, PDO::PARAM_INT);
-    $stmt->bindParam(':id_estat', $id_estat, PDO::PARAM_INT);
-    return $stmt->execute();
-} */
 ?>

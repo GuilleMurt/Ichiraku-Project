@@ -52,11 +52,11 @@
               <div class="mb-3">
                 <label for="animeStatus" class="form-label">Estado</label>
                 <select class="form-select" id="animeStatus">
-                  <option value="watching">Viendo</option>
-                  <option value="completed">Completado</option>
-                  <option value="on_hold">En Pausa</option>
-                  <option value="dropped">Abandonado</option>
-                  <option value="plan_to_watch">Plan para Ver</option>
+                  <option value="1">Vist</option>
+                  <option value="2">Seguint</option>
+                  <option value="3">Pensant Veure</option>
+                  <option value="4">Deixat</option>
+                  <option value="5">Completat</option>
                 </select>
               </div>
               <!-- Input para el episodio actual -->
