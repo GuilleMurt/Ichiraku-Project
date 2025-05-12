@@ -65,16 +65,18 @@ class UserAnimes {
     }
 
     // Actualizar un registro de anime para un usuario
-    public static function updateUserAnime($anime_id, $user_id, $chapter) {
+    public static function updateUserAnime($anime_id, $user_id, $chapter, $stat_id, $rating) {
         $conn = db::connect();
     
         $sql = "UPDATE anime_users 
-                SET chapter = :chapter, updated_at = NOW()
+                SET stat_id = :stat_id, chapter = :chapter, rating = :rating, updated_at = NOW()
                 WHERE anime_id = :anime_id AND user_id = :user_id";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':anime_id', $anime_id, PDO::PARAM_INT);
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $stmt->bindParam(':chapter', $chapter, PDO::PARAM_INT);
+        $stmt->bindParam(':stat_id', $stat_id, PDO::PARAM_INT);
+        $stmt->bindParam(':rating', $rating, PDO::PARAM_INT);
     
         $result = $stmt->execute();
     

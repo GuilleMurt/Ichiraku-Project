@@ -38,11 +38,11 @@
         <!-- Formulario para editar el perfil -->
         <form action="" method="POST">
           <div class="input-field">
-            <label for="name">Nombre</label>
+            <label for="name">Nom</label>
             <input type="text" id="name" name="name" placeholder="Ingrese su nombre" required>
           </div>
           <div class="input-field">
-            <label for="email">Correo Electrónico</label>
+            <label for="email">Correu Electrónic</label>
             <input type="email" id="email" name="email" placeholder="Ingrese su correo electrónico" required>
           </div>
 
@@ -53,14 +53,14 @@
           </div>
 
           <!-- Botón para guardar cambios -->
-          <button type="submit" class="btn-save">Guardar Cambios</button>
+          <button type="submit" class="btn-save">Desar Canvis</button>
         </form>
 
         <!-- Barra de navegación -->
         <nav class="profile-nav">
           <ul>
-            <li><a href="<?=url.'?controller=profile'?>">Mi Perfil</a></li>
-            <li><a href="#">Cambiar Contraseña</a></li>
+            <li><a href="<?=url.'?controller=profile'?>">El Meu Perfil</a></li>
+            <li><a href="#">Cambiar Contrasenya</a></li>
           </ul>
         </nav>
       </div>

@@ -3,16 +3,58 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #d0eafc, #f1faff); /* Fondo más claro */
 }
+
+/* Capas animadas de aurora */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: radial-gradient(circle at 30% 30%, #3527ff, transparent 40%),
+              radial-gradient(circle at 70% 70%, #0011ff, transparent 40%),
+              radial-gradient(circle at 50% 50%, #2321b0, transparent 40%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  animation: auroraFlow 20s ease-in-out infinite;
+  opacity: 0.3;
+  filter: blur(100px);
+  z-index: -2;
+}
+
+body::after {
+  animation-delay: 10s;
+  opacity: 0.2;
+  background: radial-gradient(circle at 20% 80%, #8995fe, transparent 40%),
+              radial-gradient(circle at 80% 20%, #8266ff, transparent 40%),
+              radial-gradient(circle at 50% 50%, #716ffc, transparent 40%);
+}
+
+@keyframes auroraFlow {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* Animación de entrada del formulario */
 
 /* Form container */
 form {
-  background-color: #fff;
-  padding: 20px 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px 35px;
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
   text-align: center;
 }
 
@@ -30,9 +72,9 @@ input[type="email"],
 input[type="password"] {
   width: 100%;
   padding: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 6px;
   font-size: 14px;
 }
 
@@ -43,7 +85,7 @@ button {
   background-color: #28a745;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -56,7 +98,7 @@ button:hover {
 /* Link to login */
 a {
   display: block;
-  margin-top: 15px;
+  margin-top: 18px;
   text-decoration: none;
   color: #007bff;
   font-size: 14px;
@@ -65,4 +107,63 @@ a {
 
 a:hover {
   color: #0056b3;
+}
+
+/* Identificador de formulario */
+form::before {
+  content: "Registre";
+  display: block;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.register-container {
+  display: flex;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  max-width: 900px;
+  width: 100%;
+  height: 520px;
+  z-index: 1;
+  animation: fadeSlideIn 0.8s ease-out forwards;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.register-form-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.register-image-side {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #f0f9ff;
+}
+
+.register-image-side img {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+}
+
+/* Animación */
+@keyframes fadeSlideIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

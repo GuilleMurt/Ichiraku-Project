@@ -33,7 +33,7 @@
             </a></li>
               <li><a href="<?=url.'?action=logout'?>" class="ichiraku-dropdown-item ichiraku-logout-link">
                 <i class="fas fa-sign-out-alt"></i>
-                Logout
+                Sortir
             </a></li>
             </ul>
           </li>

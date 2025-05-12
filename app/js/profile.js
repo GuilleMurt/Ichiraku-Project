@@ -10,6 +10,25 @@ document.addEventListener("DOMContentLoaded", async function () {
   let session_data = await get_session_email();
   if (session_data.user_email) {
     let user_data = await get_user_name(session_data.user_email);
+    let userAnimes = await get_all_user_animes();
+
+    // Agrupar animes por estado
+    const groupedAnimes = {
+      2: [], // Seguint
+      3: [], // Pensant Veure
+      4: [], // Deixat
+      1: []  // Vist
+    };
+
+    userAnimes.forEach(anime => {
+      if (groupedAnimes[anime.stat_id]) {
+        groupedAnimes[anime.stat_id].push(anime);
+      }
+    });
+
+    document.getElementById("following-animes").innerHTML = groupedAnimes[2].length;
+    document.getElementById("watched-animes").innerHTML = groupedAnimes[1].length;
+    document.getElementById("plan-to-watch-animes").innerHTML = groupedAnimes[3].length;
 
     // Actualizar los datos del perfil
     document.querySelector(".user-name").innerHTML = user_data.user_name;
@@ -43,6 +62,20 @@ document.addEventListener("DOMContentLoaded", async function () {
     formData.append("user_email", user_email);
 
     const url = `${ichirakuUrl}?controller=ApiUser&action=api`;
+
+    try {
+      const response = await axios.post(url, formData);
+      return response.data;
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
+  }
+
+  async function get_all_user_animes() {
+    let formData = new FormData();
+    formData.append("accion", "get_all_user_animes");
+
+    const url = `${ichirakuUrl}?controller=ApiUserAnimes&action=api`;
 
     try {
       const response = await axios.post(url, formData);

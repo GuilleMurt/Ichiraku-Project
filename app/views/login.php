@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="public/css/styles.css">
-    <link rel="stylesheet" href="public/css/login.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="public/css/styles.css">
+  <link rel="stylesheet" href="public/css/login.css">
 </head>
+
 <body>
-    <form action="index.php" method="POST">
+  <div class="login-container">
+    <div class="login-image">
+      <img src="public/img/about-pic.png" alt="Login Illustration">
+    </div>
+
+    <div class="login-div">
+      <img class="login-logo" src="public/img/ichiraku_logo.webp" alt="Login Illustration">
+      <form action="index.php" method="POST">
         <input type="hidden" name="action" value="login">
         <label for="email">Correu:</label>
         <input type="email" id="email" name="email" required>
@@ -16,6 +25,9 @@
         <input type="password" id="password" name="password" required>
         <button type="submit">Iniciar Sessió</button>
         <a href="index.php?action=register">¿No tens compte? Regístra't</a>
-    </form>
+      </form>
+    </div>
+  </div>
 </body>
+
 </html>

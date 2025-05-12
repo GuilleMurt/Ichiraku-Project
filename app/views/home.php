@@ -10,8 +10,8 @@
 <body>
   <main>
     <div class="search-container">
-        <input type="text" id="search-input" placeholder="Buscar anime..." />
-        <button id="search-button"><i class="fas fa-search"></i> Buscar</button>
+        <input type="text" id="search-input" placeholder="Cercar anime..." />
+        <button id="search-button"><i class="fas fa-search"></i> Cerca</button>
     </div>
     <div class="animes-dashboard"></div>
     <div class="pagination"></div>

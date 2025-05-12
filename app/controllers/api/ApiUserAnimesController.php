@@ -33,7 +33,16 @@ class ApiUserAnimesController {
             $registered = UserAnimes::getUserAnimeByUserAndAnimeId($user_id, $anime_id);
 
             if ($registered) { 
-                UserAnimes::updateUserAnime($registered["anime_users_id"], $status, $current_chapter, $rating);
+                $updatedAnime = UserAnimes::updateUserAnime($anime_id, $user_id, $current_chapter, $status, $rating);
+            
+                if ($updatedAnime) {
+                    $this->sendJsonResponse([
+                        "message" => "Anime actualizado correctamente",
+                        "data" => $updatedAnime
+                    ]);
+                } else {
+                    $this->sendJsonResponse(["error" => "Error al actualizar el anime"]);
+                }
                 return;
             }
 
@@ -48,9 +57,11 @@ class ApiUserAnimesController {
         if (trim($accion) == "update_user_anime") {
             $anime_id = isset($_POST["anime_id"]) ? $_POST["anime_id"] : '';
             $user_id = isset($_POST["user_id"]) ? $_POST["user_id"] : '';
+            $stat_id = isset($_POST["stat_id"]) ? $_POST["stat_id"] : '';
             $chapter = isset($_POST["chapter"]) ? $_POST["chapter"] : '';
+            $rating = isset($_POST["rating"]) ? $_POST["rating"] : '';
         
-            $anime_updated = UserAnimes::updateUserAnime($anime_id, $user_id, $chapter);
+            $anime_updated = UserAnimes::updateUserAnime($anime_id, $user_id, $chapter, $stat_id, $rating);
         
             if ($anime_updated) {
                 // Enviar el mensaje y los datos actualizados al cliente

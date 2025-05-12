@@ -55,26 +55,26 @@
         <div class="stats">
           <div class="stat">
             <i class="fas fa-heart"></i>
-            <span>300</span>
-            <p>Favoritos</p>
+            <span id="following-animes">0</span>
+            <p>Seguint</p>
           </div>
           <div class="stat">
             <i class="fas fa-book"></i>
-            <span>120</span>
-            <p>Animes Vistos</p>
+            <span id="watched-animes">0</span>
+            <p>Vistos</p>
           </div>
           <div class="stat">
-            <i class="fas fa-users"></i>
-            <span>800</span>
-            <p>Seguidores</p>
+            <i class="fas fa-eye"></i>
+            <span id="plan-to-watch-animes">0</span>
+            <p>Per Veure</p>
           </div>
         </div>
 
         <nav class="profile-nav">
           <ul>
-            <li><a href="#">Mis Animes</a></li>
+            <li><a href="<?=url.'?controller=userList'?>">Els Meus Animes</a></li>
             <li><a href="<?=url.'?controller=profile&action=editProfile'?>">Editar Perfil</a></li>
-            <li><a href="<?=url.'?action=logout'?>">Cerrar Sesión</a></li>
+            <li><a href="<?=url.'?action=logout'?>">Tancar Sessió</a></li>
           </ul>
         </nav>
       </div>
