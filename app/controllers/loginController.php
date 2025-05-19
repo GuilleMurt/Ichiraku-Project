@@ -4,25 +4,33 @@ require 'app/models/User.php';
 class LoginController {
     public function index() {
         session_start();
-    
+
         if (isset($_SESSION['user_id'])) {
             header("Location: index.php?controller=home");
             exit();
         }
-    
+
+        // Definir variables para el mensaje y tipo de alerta
+        $message = null;
+        $messageType = null;
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $action = $_POST['action'] ?? '';
             if ($action === 'login') {
-                $this->login();
+                list($message, $messageType) = $this->login();
+                require 'app/views/login.php';
+                return;
             } elseif ($action === 'register') {
-                $this->register();
+                list($message, $messageType) = $this->register();
+                require 'app/views/login.php'; // redirige a login tras registrar
+                return;
             }
         } elseif (isset($_GET['action']) && $_GET['action'] === 'register') {
-            // Cargar la vista de registro si la acción es "register"
             require 'app/views/register.php';
-        } else {
-            require 'app/views/login.php';
+            return;
         }
+
+        require 'app/views/login.php';
     }
 
     private function login() {
@@ -36,8 +44,7 @@ class LoginController {
             header("Location: index.php?controller=home");
             exit();
         } else {
-            echo '<p class="error">Error: Credenciales incorrectas.</p>';
-            require 'app/views/login.php';
+            return ["Credenciales incorrectas.", "danger"];
         }
     }
 
@@ -46,12 +53,15 @@ class LoginController {
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
 
+        $emailExists = User::getUserByEmail($email);
+        if ($emailExists) {
+            return ["El correo ya está en uso.", "danger"];
+        }
+
         if (User::registerUser($user_name, $email, $password)) {
-            echo '<p class="success">Usuario registrado correctamente. Por favor, inicia sesión.</p>';
-            require 'app/views/login.php';
+            return ["Usuario registrado correctamente. Por favor, inicia sesión.", "success"];
         } else {
-            echo '<p class="error">Error: No se pudo registrar el usuario.</p>';
-            require 'app/views/register.php';
+            return ["No se pudo registrar el usuario.", "danger"];
         }
     }
 

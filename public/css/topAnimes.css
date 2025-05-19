@@ -1,0 +1,158 @@
+body {
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  font-weight: 700;
+  color: #333;
+}
+
+/* Podio horizontal */
+#top-podium-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.podium-col {
+  flex: 1 1 30%;
+  max-width: 330px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Tarjetas de anime */
+.anime-card {
+  position: relative;
+  border: none;
+  transition: transform 0.2s ease;
+  height: 100%;
+  width: 100%;
+  min-height: 410px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.anime-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.anime-card img {
+  object-fit: cover;
+  height: 260px;
+  width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.anime-card .card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.anime-card .card-title {
+  font-size: 15px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.anime-card .card-text {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Etiqueta de posición */
+.rank-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #000000aa;
+  color: white;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 14px;
+  z-index: 1;
+}
+
+/* Colores de podio */
+.podium-gold {
+  border: 2px solid #FFD700;
+}
+.podium-silver {
+  border: 2px solid #C0C0C0;
+}
+.podium-bronze {
+  border: 2px solid #cd7f32;
+}
+.podium-gold .rank-badge {
+  background: #FFD700;
+  color: #000;
+}
+.podium-silver .rank-badge {
+  background: #C0C0C0;
+  color: #000;
+}
+.podium-bronze .rank-badge {
+  background: #cd7f32;
+  color: #fff;
+}
+
+/* Grid del resto */
+#top-animes-container .anime-card {
+  height: 100%;
+}
+
+/* Responsive ajustes */
+@media (max-width: 768px) {
+  .podium-col {
+    max-width: 100%;
+  }
+
+  .anime-card img {
+    height: 220px;
+  }
+}
+
+/* Skeleton loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -300px 0;
+  }
+  100% {
+    background-position: 300px 0;
+  }
+}
+
+.skeleton-card {
+  border-radius: 8px;
+  background: #e0e0e0;
+  background-image: linear-gradient(90deg, #e0e0e0 0px, #f0f0f0 40px, #e0e0e0 80px);
+  background-size: 600px 100%;
+  animation: shimmer 1.2s infinite linear;
+  width: 100%;
+  height: 410px;
+}
+
+.skeleton-img {
+  width: 100%;
+  height: 260px;
+  border-radius: 8px 8px 0 0;
+}
+
+.skeleton-line {
+  height: 15px;
+  margin: 10px 20px;
+  border-radius: 4px;
+  background: #e0e0e0;
+}

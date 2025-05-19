@@ -48,6 +48,11 @@ body::after {
   }
 }
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .login-container {
   display: flex;
   background: #fff;
@@ -58,17 +63,8 @@ body::after {
   width: 100%;
   height: 500px;
   align-items: center;
-  animation: floatIn 1s ease-out forwards;
-  transform: translateY(20px);
-  opacity: 0;
 }
 
-@keyframes floatIn {
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
 
 .login-image {
   flex: 1;
@@ -152,3 +148,6 @@ a {
 a:hover {
   color: #0056b3;
 }
+
+
+

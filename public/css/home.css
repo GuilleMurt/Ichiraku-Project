@@ -192,3 +192,85 @@ body > * {
 #search-button:hover {
   background-color: #0056b3;
 }
+
+/* ========================= */
+/* RESPONSIVE BREAKPOINTS   */
+/* ========================= */
+
+/* Tablets */
+@media (max-width: 991px) {
+  .animes-dashboard {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 0 20px;
+  }
+
+  .anime-card {
+    padding: 10px;
+  }
+
+  .anime-card img {
+    height: 240px;
+  }
+
+  .anime-card h3 {
+    font-size: 14px;
+    white-space: normal;
+  }
+
+  .anime-card p {
+    font-size: 13px;
+  }
+
+  .search-container {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 20px;
+  }
+
+  #search-input,
+  #search-button {
+    width: 100%;
+  }
+}
+
+/* Móviles */
+@media (max-width: 576px) {
+  .animes-dashboard {
+    grid-template-columns: 1fr;
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .anime-card {
+    padding: 8px;
+  }
+
+  .anime-card img {
+    height: 200px;
+  }
+
+  .anime-card h3 {
+    font-size: 13px;
+  }
+
+  .anime-card p {
+    font-size: 12px;
+  }
+
+  .search-container {
+    flex-direction: column;
+    padding: 0 16px;
+  }
+
+  #search-input,
+  #search-button {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .pagination button {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}

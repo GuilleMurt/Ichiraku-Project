@@ -20,6 +20,7 @@
                     <li><a href="<?=url.'?controller=home'?>" class="ichiraku-nav-link">Inici</a></li>
                     <li><a href="<?=url.'?controller=about'?>" class="ichiraku-nav-link">Sobre Nosaltres</a></li>
                     <li><a href="<?=url.'?controller=userList'?>" class="ichiraku-nav-link">Llista Anime</a></li>
+                    <li><a href="<?=url.'?controller=topAnime'?>" class="ichiraku-nav-link">Top Animes</a></li>
                 </ul>
             </nav>
         </div>

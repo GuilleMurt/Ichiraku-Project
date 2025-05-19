@@ -1,6 +1,6 @@
 <?php
     define('views_controller',array(
-        'homeController.php', 'aboutController.php', 'profileController.php', 'animeDetailsController.php', 'userListController.php'));
+        'homeController.php', 'aboutController.php', 'profileController.php', 'animeDetailsController.php', 'userListController.php', 'topAnimeController.php'));
     
     define('apis', array(
         'ApiUserController.php', 'ApiUserAnimesController.php', 'ApiAnimeController.php'));
